@@ -27,8 +27,10 @@ class ChangeUserStatus extends Command
 
     public function handle()
     {
+        // Query to update users' status to 'Not Active' whose email contains "test"
         $count = User::where('email', 'like', '%test%')->update(['status' => false]);
 
+        // Output the count and a message
         $this->info($count . ' users\' status changed to Not Active.');
     }
 }

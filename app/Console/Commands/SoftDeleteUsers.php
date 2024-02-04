@@ -26,8 +26,10 @@ class SoftDeleteUsers extends Command
      */
     public function handle()
     {
-        $deactiveUser = User::where('status', false)->delete();
+        // Query to soft delete users with status 'Not Active'
+        $deactiveUserCount = User::where('status', false)->delete();
 
-        $this->info($deactiveUser . ' users soft deleted.');
+        // Output the count and a message
+        $this->info($deactiveUserCount . ' users soft deleted.');
     }
 }
